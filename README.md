@@ -8,7 +8,6 @@ Para o deadlock, precisam existir: exclusão mútua, manter-e-esperar, não pree
 
 Pseudocódigo:
 ```
-python
 Definir N = 5
 Definir garfo_esquerda = p
 Definir garfo_direita = (p + 1) % N
