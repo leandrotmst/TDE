@@ -8,7 +8,6 @@ garfos = []
 for _ in range(N):
     garfos.append(threading.Lock())
 
-
 def interacoes(id_filosofo):
     while True:
         garfo_esquerda = id_filosofo
@@ -23,7 +22,6 @@ def interacoes(id_filosofo):
         time.sleep(random.uniform(0.5, 1.5))
         garfos[garfo_direita].release()
         garfos[garfo_esquerda].release()
-
 
 threads_filosofos = []
 for i in range(N):

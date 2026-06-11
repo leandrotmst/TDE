@@ -31,5 +31,3 @@ Enquanto o programa rodar:
     Liberar(segundo_garfo)  // Boa prática: liberação inversa
     Liberar(primeiro_garfo)
 ```
-
-## PARTE 2 - Threads e semáforos
