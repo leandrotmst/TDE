@@ -114,11 +114,9 @@ A versão sem semáforo: tem throughput mais alto. As 8 threads incrementam ao m
 A versão com semáforo: tem um throughput que é mais baixo, as threads precisam esperar a sua vez. É mais lenta mas o resultado está correto, mais ou menos 1120ms.
 
 Visibilidade/ordenação - barreira implícitas:
-Visibilidade é garantir que a escrita de uma thread fique visível para as outras. No nosso código, quando uma thread usa contador = soma_um(valor), a próxima thread que for ler valor = contador precisa enxergar esse valor novo. O processador pode usar cópia dos dados nos caches. Sem sincronização, uma thread poderia escrever o novo valor do contador no seu cache enquanto outra continua lendo um valor antigo do cache dela.
+Visibilidade é garantir que a escrita de uma thread fique visível para as outras. No nosso código, quando uma thread usa contador = soma_um(valor), a próxima thread que for ler valor = contador precisa enxergar esse valor novo. Então, a troca de threads entre as operações é o que causa o problema central.
 
-Ordenação é fazer com que as operações aconteçam na ordem esperada. Compiladores podem mudar a ordem das instruções para otimizar. Dentro de uma única thread isso não tem problema, mas com várias threads mexendo no mesmo contador poderia fazer uma thread ver a leitura e a escrita de outra fora de ordem.
+Ordenação é fazer com que as operações aconteçam na ordem esperada. Compiladores podem mudar a ordem das instruções para otimizar, e no java é o happens before que impede que isso, ou os caches do processador façam uma thread ver a leitura e a escrita de outra fora de ordem. No nosso caso (python) com o CPython e o GIL, a perda de incrementos não veio da reordenação nem do cache, e sim da troca de thread entre as operações.
 
 No CPython (interpretador), temos o GIL (global interpreter lock), que faz apenas uma thread executar código por vez, e as barreiras de memória, o semaforo.acquire() e o semaforo.release(), que fazem com que a escrita no contador esteja correta para a próxima thread que adquirir a permissão. Por isso, na versão com semáforo, a thread sempre lê o valor atualizado e o resultado da sempre 1,600,000.
 Porém, o GIL protege cada passo isolado, o semáforo protege a sequência inteira como um bloco. O GIL garante atomicidade (sem ser interrompida no meio) apenas de instruções individuais (bytecodes), e não deixa atomica a sequência valor = contador e contador = soma_um(valor). Como são operações separadas, o interpretador pode trocar de thread entre elas, e é essa brecha que faz a versão sem semáforo perder incrementos.
-
-
