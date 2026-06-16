@@ -20,8 +20,6 @@ def interacoes(id_filosofo):
             primeiro_garfo = garfo_direita
             segundo_garfo = garfo_esquerda
 
-        print(f"Filósofo {id_filosofo} pensando...")
-        time.sleep(random.uniform(0.5, 1.5))
         print(f"Filósofo {id_filosofo} com fome...")
         garfos[primeiro_garfo].acquire()
         time.sleep(0.1)
@@ -30,6 +28,8 @@ def interacoes(id_filosofo):
         time.sleep(random.uniform(0.5, 1.5))
         garfos[segundo_garfo].release()
         garfos[primeiro_garfo].release()
+        print(f"Filósofo {id_filosofo} pensando...")
+        time.sleep(random.uniform(0.5, 1.5))
 
 threads_filosofos = []
 for i in range(N):
