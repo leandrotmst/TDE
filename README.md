@@ -3,7 +3,7 @@ Grupo 14
 Fernanda Collere Milaneze, Igor Brevesteky de Paula, Leandro Tomasetto, Marcelo Bellon Ferreira Junior e Yumi Komatsu
 Linguagem utilizada: Python
 Instruções de compilação e execução:
-Link do vídeo: 
+Link do vídeo: https://youtu.be/D3rsUyEYrVw
 
 ## PARTE 1 - Jantar dos filósofos
 Cinco filósofos estão sentados em uma mesa circular, alternando entre pensar e comer. Para comer, cada filósofo precisa dos dois garfos, à sua esquerda e direita. O problema é que há 5 garfos para 5 filósofos, então para alguns comerem os outros devem esperar até serem soltos os 2 garfos.
