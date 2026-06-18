@@ -1,7 +1,7 @@
 # TDE - Performance em Sistemas Ciberfísicos 
 Grupo 14
-Fernanda Collere Milaneze, Igor Brevesteky de Paula, Leandro Tomasetto, Marcelo Bellon Ferreira Junior e Yumi Komatsu.  
- Linguagem utilizada: Python
+- Fernanda Collere Milaneze, Igor Brevesteky de Paula, Leandro Tomasetto, Marcelo Bellon Ferreira Junior e Yumi Komatsu.  
+- Linguagem utilizada: Python
 Link do vídeo: https://youtu.be/D3rsUyEYrVw
 
 ## PARTE 1 - Jantar dos filósofos
