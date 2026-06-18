@@ -1,11 +1,14 @@
 # TDE - Performance em Sistemas Ciberfísicos 
 Grupo 14
-Fernanda Collere Milaneze, Igor Brevesteky de Paula, Leandro Tomasetto, Marcelo Bellon Ferreira Junior e Yumi Komatsu
-Linguagem utilizada: Python
-Instruções de compilação e execução:
+Fernanda Collere Milaneze, Igor Brevesteky de Paula, Leandro Tomasetto, Marcelo Bellon Ferreira Junior e Yumi Komatsu.  
+ Linguagem utilizada: Python
 Link do vídeo: https://youtu.be/D3rsUyEYrVw
 
 ## PARTE 1 - Jantar dos filósofos
+Para executar: 
+python "parte1-filosofos/first.py"
+python "parte1-filosofos/second.py"
+
 Cinco filósofos estão sentados em uma mesa circular, alternando entre pensar e comer. Para comer, cada filósofo precisa dos dois garfos, à sua esquerda e direita. O problema é que há 5 garfos para 5 filósofos, então para alguns comerem os outros devem esperar até serem soltos os 2 garfos.
 Na 1 versão, todos seguem o mesmo protocolo de pegar primeiro o garfo a esquerda e depois à direita. Então, se todos os cinco sentirem fome, cada um pegará o seu garfo da esquerda. Quando tentarem pegar o garfo da direita, todos ficarão bloqueados pra sempre, pois o garfo vizinho já estará ocupado. Isso resulta em um Deadlock, onde nenhuma thread progride.
 
@@ -39,6 +42,7 @@ Enquanto o programa rodar:
 
 ## PARTE 2 - Threads e semáforos
 Testado com Python 3.12
+Para executar: python "parte2-semaforo/Parte2"
 
 Sobre o trabalho:
 Criamos t = 8 threads que incrementam um mesmo contador compartilhado m = 200.000 vezes cada. O valor correto no final deveria ser t x m = 1.600.000.
@@ -105,7 +109,7 @@ Exemplo: O contador está em 500, uma thread lê o 500 do contador, soma +1 e en
 Isso é a condição de corrida, o resultado depende da ordem em que o escalonador alterna as threads.
 
 Por que a versão com semáforo é correta?
-O semáforo binário tem só 1 permissão. O método acquire() utiliza essa permissão, se outra thread já está usando essa permissão, a chamada bloqueia até ser devolvida pelo release(), isso garante a exclusão mútua (uma thread por vez pode acessar um recurso compartilhado). Então, apenas uma thread por vez executa os passos de ler, somar e escrever. Nenhuma thread consegue ler o contador enquanto outra está utilizando, então nenhum incremento é perdido e o resultado é sempre 1.600.000.
+O semáforo binário tem só 1 permissão. O método acquire() utiliza essa permissão, se outra thread já está usando essa permissão, a chamada bloqueia até ser devolvida pelo release(), isso garante a exclusão mútua (uma thread por vez pode acessar um recurs compartilhado). Então, apenas uma thread por vez executa os passos de ler, somar e escrever. Nenhuma thread consegue ler o contador enquanto outra está utilizando, então nenhum incremento é perdido e o resultado é sempre 1.600.000.
 O try e finnaly garantem que a permissão seja devolvida mesmo que ocorra um erro no processo de ler, somar e compartilhar, evitando que trave o sistema.
 
 Trade-off de throughput:
@@ -123,6 +127,10 @@ Porém, o GIL protege cada passo isolado, o semáforo protege a sequência intei
 # Parte 3 — Deadlock
 
 Testado com Python 3.12
+Para executar: 
+python "parte3-deadlock/deadlock.py"
+python "parte3-deadlock/corrigido.py"
+
 Sobre o Trabalho:
 
 Duas threads e dois locks (A e B). A diferença entre as duas versões está na ordem em que cada thread adquire os locks:
